@@ -1,5 +1,6 @@
 import joi from 'joi';
 import { connection } from '../database.js';
+import bcrypt from 'bcrypt';
 
 
 const authSchema = joi.object({
@@ -7,6 +8,11 @@ const authSchema = joi.object({
     email: joi.string().email().required(),
     password: joi.string().required(),
     confirmPassword: joi.string().required()
+});
+
+const authSigninSchema = joi.object({
+    email: joi.string().email().required(),
+    password: joi.string().required()
 });
 
 
@@ -32,3 +38,20 @@ export async function authSignup (req, res, next) {
 
     next()
 }
+
+export async function authSignin (req, res, next) {
+    const { email, password } = req.body;
+
+    const validation = authSigninSchema.validate({ email, password}, {abortEarly: false});
+
+    if(validation.error){
+        const error = validation.error.details.map(err => err.message);
+        return res.status(422).send(error)
+    }
+
+    res.locals.user = { email, password }
+
+    next()
+}
+
+
