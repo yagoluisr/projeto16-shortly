@@ -13,8 +13,8 @@ export async function authToken (req, res, next) {
         
         return res.sendStatus(401);
     }
-    
-    res.locals.token = token;
+
+    res.locals.user = user.rows[0];
 
     next();
 }
