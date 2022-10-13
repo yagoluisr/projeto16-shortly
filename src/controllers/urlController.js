@@ -20,7 +20,7 @@ export async function shorten (req, res) {
 
     try {
         await connection.query(
-            'INSERT INTO urls ("userId", url, "shortURL") VALUES ($1,$2,$3);',[user.id, url, shortUrl]
+            'INSERT INTO urls ("userId", "URL", "shortUrl") VALUES ($1,$2,$3);',[user.id, url, shortUrl]
         );
 
         res.status(201).send({shortUrl})
@@ -35,12 +35,32 @@ export async function getUrls (req, res) {
     try {
 
         const url = await connection.query(
-            'SELECT id, "shortURL", url FROM urls WHERE id = $1',[id]
+            'SELECT id, "shortUrl", "URL" FROM urls WHERE id = $1',[id]
         );
 
         if(!url.rows[0]) return res.sendStatus(404);
 
         res.status(200).send(url.rows[0]);
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+}
+
+export async function acessUrl (req, res) {
+    const { shortUrl } = req.params;
+
+    try {
+        const hasShortUrl = await connection.query(
+            'SELECT * FROM urls WHERE "shortUrl" = $1',[shortUrl]
+        );
+            
+        if(!hasShortUrl.rows[0]) return res.sendStatus(404);
+console.log(hasShortUrl.rows[0])
+        // await connection.query(
+        //     'INSERT INTO acessurl ("urlId") VALUES ($1);',[hasShortUrl.id]
+        // );
+
+        res.redirect(hasShortUrl.URL);
     } catch (error) {
         res.status(500).send(error.message)
     }
