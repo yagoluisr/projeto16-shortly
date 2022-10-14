@@ -55,13 +55,41 @@ export async function acessUrl (req, res) {
         );
             
         if(!hasShortUrl.rows[0]) return res.sendStatus(404);
-console.log(hasShortUrl.rows[0])
-        // await connection.query(
-        //     'INSERT INTO acessurl ("urlId") VALUES ($1);',[hasShortUrl.id]
-        // );
+console.log(hasShortUrl.rows[0].id)
+        await connection.query(
+            'INSERT INTO "accessUrl" ("urlId") VALUES ($1);',[hasShortUrl.rows[0].id]
+        );
 
-        res.redirect(hasShortUrl.URL);
+        res.send('ok')
+        //res.redirect(hasShortUrl.URL);
     } catch (error) {
         res.status(500).send(error.message)
+    }
+}
+
+export async function deleteUrl (req, res) {
+    const { id } = req.params;
+    const userSessions = res.locals.user;
+
+    try {
+        const url = await connection.query(
+            'SELECT * FROM urls WHERE id = $1', [id]
+        );
+
+        if(!url.rows[0]) return res.sendStatus(404);
+
+        if(userSessions.userId != url.rows[0].userId) return res.sendStatus(401);
+
+        await connection.query(
+            'DELETE FROM "accessUrl" WHERE "urlId" = $1;',[id]
+        );
+
+        await connection.query(
+            'DELETE FROM urls WHERE id = $1',[id]
+        );
+
+        res.sendStatus(204);
+    } catch (error) {
+        res.status(500).send(error.message);
     }
 }
