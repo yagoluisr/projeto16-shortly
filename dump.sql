@@ -387,3 +387,62 @@ ALTER TABLE ONLY public.urls
 -- PostgreSQL database dump complete
 --
 
+
+
+
+
+
+
+------------------------------------------------------
+
+
+
+
+
+CREATE TABLE users (
+	"id" SERIAL PRIMARY KEY,
+	"name" TEXT NOT NULL,
+	"email" varchar(45) NOT NULL UNIQUE,
+	"password" TEXT NOT NULL,
+	"createdAt" TIMESTAMP with time zone NOT NULL DEFAULT now()
+);
+
+
+
+CREATE TABLE urls (
+	"id" SERIAL PRIMARY KEY,
+	"userId" integer NOT NULL REFERENCES "users"("id"),
+	"URL" TEXT NOT NULL,
+	"shortUrl" TEXT NOT NULL,
+	"createdAt" TIMESTAMP with time zone NOT NULL DEFAULT now()
+);
+
+
+
+CREATE TABLE sessions (
+	"id" SERIAL PRIMARY KEY,
+	"userId" integer NOT NULL REFERENCES "users"("id"),
+	"token" TEXT NOT NULL,
+	"createdAt" TIMESTAMP with time zone NOT NULL DEFAULT now()
+);
+
+
+
+CREATE TABLE acessUrl (
+	"id" SERIAL PRIMARY KEY,
+	"urlId" integer NOT NULL REFERENCES "urls"("id"),
+	"createdAt" TIMESTAMP with time zone NOT NULL DEFAULT now()
+);
+
+
+
+
+ALTER TABLE "urls" ADD CONSTRAINT "urls_fk0" FOREIGN KEY ("userId") ;
+
+ALTER TABLE "sessions" ADD CONSTRAINT "sessions_fk0" FOREIGN KEY ("userId") ;
+
+ALTER TABLE "acessUrl" ADD CONSTRAINT "acessUrl_fk0" FOREIGN KEY ("urlId") ;
+
+
+
+
