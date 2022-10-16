@@ -16,7 +16,7 @@ export async function shorten (req, res) {
     }
 
     let shortUrl = url
-    shortUrl = nanoid();
+    shortUrl = nanoid(8);
 
     try {
         await connection.query(
@@ -53,15 +53,14 @@ export async function acessUrl (req, res) {
         const hasShortUrl = await connection.query(
             'SELECT * FROM urls WHERE "shortUrl" = $1',[shortUrl]
         );
-            
+        console.log(hasShortUrl)
         if(!hasShortUrl.rows[0]) return res.sendStatus(404);
-console.log(hasShortUrl.rows[0].id)
+
         await connection.query(
             'INSERT INTO "accessUrl" ("urlId") VALUES ($1);',[hasShortUrl.rows[0].id]
         );
 
-        res.send('ok')
-        //res.redirect(hasShortUrl.URL);
+        res.redirect(hasShortUrl.rows[0].URL);
     } catch (error) {
         res.status(500).send(error.message)
     }
