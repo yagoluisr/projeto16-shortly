@@ -260,6 +260,15 @@ INSERT INTO public."accessUrl" VALUES (76, 4, '2022-10-16 19:41:13.269734-03');
 INSERT INTO public."accessUrl" VALUES (77, 4, '2022-10-16 19:41:13.83642-03');
 INSERT INTO public."accessUrl" VALUES (78, 4, '2022-10-16 19:41:14.378195-03');
 INSERT INTO public."accessUrl" VALUES (79, 4, '2022-10-16 19:41:14.959506-03');
+INSERT INTO public."accessUrl" VALUES (80, 6, '2022-10-17 10:28:32.698237-03');
+INSERT INTO public."accessUrl" VALUES (81, 6, '2022-10-17 10:28:39.868273-03');
+INSERT INTO public."accessUrl" VALUES (82, 6, '2022-10-17 10:29:09.945669-03');
+INSERT INTO public."accessUrl" VALUES (83, 7, '2022-10-17 10:44:50.301359-03');
+INSERT INTO public."accessUrl" VALUES (84, 7, '2022-10-17 10:45:22.042538-03');
+INSERT INTO public."accessUrl" VALUES (85, 7, '2022-10-17 10:45:34.874276-03');
+INSERT INTO public."accessUrl" VALUES (86, 6, '2022-10-17 10:46:01.881318-03');
+INSERT INTO public."accessUrl" VALUES (87, 7, '2022-10-17 10:46:16.769636-03');
+INSERT INTO public."accessUrl" VALUES (88, 7, '2022-10-17 10:46:53.687655-03');
 
 
 --
@@ -269,6 +278,7 @@ INSERT INTO public."accessUrl" VALUES (79, 4, '2022-10-16 19:41:14.959506-03');
 INSERT INTO public.sessions VALUES (1, 1, 'bcae7b77-3a89-43a6-9926-ec53a7d84f7b', '2022-10-16 15:19:43.303358-03');
 INSERT INTO public.sessions VALUES (2, 2, '3f3c508a-7d74-4f1a-aaea-11a6ef249cca', '2022-10-16 15:20:35.182397-03');
 INSERT INTO public.sessions VALUES (3, 3, 'b17fe17a-332e-48c5-868c-0cd98cf4ceb1', '2022-10-16 15:20:47.465794-03');
+INSERT INTO public.sessions VALUES (4, 4, '30682253-b17e-45b6-9444-5ef73e659210', '2022-10-17 10:24:22.52283-03');
 
 
 --
@@ -280,6 +290,8 @@ INSERT INTO public.urls VALUES (2, 1, 'https://www.google.com/search?q=timestamp
 INSERT INTO public.urls VALUES (3, 1, 'https://www.alura.com.br/artigos/join-em-sql?gclid=CjwKCAjwtKmaBhBMEiwAyINuwLjxMg3y295R6YUrP9blGgqXNw_QsQdPkDJ_hDMXJR5M2XeoDMRJLxoCzhUQAvD_BwE', '5e56nLaR4dMsF_6nD_y61', '2022-10-16 15:23:38.927043-03');
 INSERT INTO public.urls VALUES (4, 2, 'https://github.com/yagoluisr/projeto16-shortly', 'ndAEyk2mcNxu189a_ZeFY', '2022-10-16 15:24:17.16104-03');
 INSERT INTO public.urls VALUES (5, 2, 'https://www.figma.com/file/DWg9233KR2GS6RLvfZRwyd/Shortly?node-id=0%3A1', 'tcgramDlhxi_JSZJwoF22', '2022-10-16 15:24:37.184411-03');
+INSERT INTO public.urls VALUES (6, 4, 'https://bootcampra.notion.site/Artigo-Deploy-de-aplica-es-back-end-no-Heroku-SQL-96ff4f6b854a4f4fa17a4f783edce785', 'e93lHSKB', '2022-10-17 10:26:33.655553-03');
+INSERT INTO public.urls VALUES (7, 4, 'https://www.libertyseguros.com.br/Pages/Home.aspx', '2JkDGISm', '2022-10-17 10:44:19.095195-03');
 
 
 --
@@ -289,34 +301,35 @@ INSERT INTO public.urls VALUES (5, 2, 'https://www.figma.com/file/DWg9233KR2GS6R
 INSERT INTO public.users VALUES (1, 'João', 'joao@driven.com.br', '$2b$10$ReEWIMuFuNc1JJ/.ai0Ehu3PrxOaN.Jz0TGigkQQXsB/Wj0TbKsCm', '2022-10-16 15:18:02.201624-03');
 INSERT INTO public.users VALUES (2, 'Maria', 'maria@driven.com.br', '$2b$10$bDFrvb/IJI/NYVIv84jOCevIhd7DSr5koDSjEYO3SWJFfMEAYtTMK', '2022-10-16 15:18:20.652914-03');
 INSERT INTO public.users VALUES (3, 'Zezinho', 'Zezinho@driven.com.br', '$2b$10$gklCmpam6IMwjTa/8JqLAex406m8.FT51qrtd7PEVJuoEFQNMSqqi', '2022-10-16 15:18:32.372284-03');
+INSERT INTO public.users VALUES (4, 'Groot', 'groot@driven.com.br', '$2b$10$4/uE0rI7Spv..Z/lN92GZO46SQx.9vou5DDXFG8tsEEgt.E5484Am', '2022-10-17 10:23:29.978901-03');
 
 
 --
 -- Name: accessUrl_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."accessUrl_id_seq"', 79, true);
+SELECT pg_catalog.setval('public."accessUrl_id_seq"', 88, true);
 
 
 --
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 3, true);
+SELECT pg_catalog.setval('public.sessions_id_seq', 4, true);
 
 
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 5, true);
+SELECT pg_catalog.setval('public.urls_id_seq', 7, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 3, true);
+SELECT pg_catalog.setval('public.users_id_seq', 4, true);
 
 
 --
@@ -386,63 +399,4 @@ ALTER TABLE ONLY public.urls
 --
 -- PostgreSQL database dump complete
 --
-
-
-
-
-
-
-
-------------------------------------------------------
-
-
-
-
-
-CREATE TABLE users (
-	"id" SERIAL PRIMARY KEY,
-	"name" TEXT NOT NULL,
-	"email" varchar(45) NOT NULL UNIQUE,
-	"password" TEXT NOT NULL,
-	"createdAt" TIMESTAMP with time zone NOT NULL DEFAULT now()
-);
-
-
-
-CREATE TABLE urls (
-	"id" SERIAL PRIMARY KEY,
-	"userId" integer NOT NULL REFERENCES "users"("id"),
-	"URL" TEXT NOT NULL,
-	"shortUrl" TEXT NOT NULL,
-	"createdAt" TIMESTAMP with time zone NOT NULL DEFAULT now()
-);
-
-
-
-CREATE TABLE sessions (
-	"id" SERIAL PRIMARY KEY,
-	"userId" integer NOT NULL REFERENCES "users"("id"),
-	"token" TEXT NOT NULL,
-	"createdAt" TIMESTAMP with time zone NOT NULL DEFAULT now()
-);
-
-
-
-CREATE TABLE acessUrl (
-	"id" SERIAL PRIMARY KEY,
-	"urlId" integer NOT NULL REFERENCES "urls"("id"),
-	"createdAt" TIMESTAMP with time zone NOT NULL DEFAULT now()
-);
-
-
-
-
-ALTER TABLE "urls" ADD CONSTRAINT "urls_fk0" FOREIGN KEY ("userId") ;
-
-ALTER TABLE "sessions" ADD CONSTRAINT "sessions_fk0" FOREIGN KEY ("userId") ;
-
-ALTER TABLE "acessUrl" ADD CONSTRAINT "acessUrl_fk0" FOREIGN KEY ("urlId") ;
-
-
-
 

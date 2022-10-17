@@ -53,7 +53,7 @@ export async function acessUrl (req, res) {
         const hasShortUrl = await connection.query(
             'SELECT * FROM urls WHERE "shortUrl" = $1',[shortUrl]
         );
-        console.log(hasShortUrl)
+
         if(!hasShortUrl.rows[0]) return res.sendStatus(404);
 
         await connection.query(

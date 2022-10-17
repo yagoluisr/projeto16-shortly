@@ -39,20 +39,20 @@ export async function ranking (req, res) {
                 LEFT JOIN urls 
                     ON users.id = urls."userId" 
                     GROUP BY users.id) AS a 
-                LEFT JOIN 
-                    (SELECT 
-                        users.id,
-                        COUNT(urls."userId") AS "visitCount" 
-                    FROM users 
-                        LEFT JOIN urls 
-                    ON users.id = urls."userId"
-                        LEFT JOIN "accessUrl" 
-                    ON "accessUrl"."urlId" = urls.id 
-                        GROUP By users.id) AS b 
-                ON a."userId" = b.id 
-                    ORDER BY "visitCount" 
-                    DESC 
-                    LIMIT 10;
+            LEFT JOIN 
+                (SELECT 
+                    users.id,
+                    COUNT(urls."userId") AS "visitCount" 
+                FROM users 
+                    LEFT JOIN urls 
+                ON users.id = urls."userId"
+                    LEFT JOIN "accessUrl" 
+                ON "accessUrl"."urlId" = urls.id 
+                    GROUP By users.id) AS b 
+            ON a."userId" = b.id 
+                ORDER BY "visitCount" 
+                DESC 
+                LIMIT 10;
             `
         );
 
